@@ -1,0 +1,1773 @@
+{
+  "id": "37fcf733-bc61-4e86-9709-debd3e0f2eb6",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.autonomous_workflow_logs": {
+      "name": "autonomous_workflow_logs",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "cycle_number": {
+          "name": "cycle_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "stage_name": {
+          "name": "stage_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "action_type": {
+          "name": "action_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "target_entity_code": {
+          "name": "target_entity_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "selection_rationale": {
+          "name": "selection_rationale",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "outcome_summary": {
+          "name": "outcome_summary",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "scientific_disposition": {
+          "name": "scientific_disposition",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "software_version": {
+          "name": "software_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'omeil-os-1.0.0'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.calibration_benchmarks": {
+      "name": "calibration_benchmarks",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "test_code": {
+          "name": "test_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "test_name": {
+          "name": "test_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "category": {
+          "name": "category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "injected_ground_truth": {
+          "name": "injected_ground_truth",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sensitivity": {
+          "name": "sensitivity",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "false_positive_rate": {
+          "name": "false_positive_rate",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "precision_score": {
+          "name": "precision_score",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "recall_score": {
+          "name": "recall_score",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "detection_delay_steps": {
+          "name": "detection_delay_steps",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "notes": {
+          "name": "notes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "software_version": {
+          "name": "software_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'omeil-os-0.9.4'"
+        },
+        "executed_at": {
+          "name": "executed_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "calibration_benchmarks_test_code_unique": {
+          "name": "calibration_benchmarks_test_code_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "test_code"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.claims_ledger": {
+      "name": "claims_ledger",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "claim_code": {
+          "name": "claim_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "programme_id": {
+          "name": "programme_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "claim_text": {
+          "name": "claim_text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "claim_type": {
+          "name": "claim_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "operational_definition": {
+          "name": "operational_definition",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "supporting_run_ids": {
+          "name": "supporting_run_ids",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "contradicting_run_ids": {
+          "name": "contradicting_run_ids",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "assumptions": {
+          "name": "assumptions",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "alternative_explanations": {
+          "name": "alternative_explanations",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "scope_conditions": {
+          "name": "scope_conditions",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "uncertainty": {
+          "name": "uncertainty",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "confidence_label": {
+          "name": "confidence_label",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "validation_status": {
+          "name": "validation_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'candidate'"
+        },
+        "independence_classification": {
+          "name": "independence_classification",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "software_version": {
+          "name": "software_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'omeil-os-0.9.4'"
+        },
+        "human_override_approved": {
+          "name": "human_override_approved",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "human_override_note": {
+          "name": "human_override_note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "claims_ledger_programme_id_research_programmes_id_fk": {
+          "name": "claims_ledger_programme_id_research_programmes_id_fk",
+          "tableFrom": "claims_ledger",
+          "tableTo": "research_programmes",
+          "columnsFrom": [
+            "programme_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "claims_ledger_claim_code_unique": {
+          "name": "claims_ledger_claim_code_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "claim_code"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.counterfactual_interventions": {
+      "name": "counterfactual_interventions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "parent_run_id": {
+          "name": "parent_run_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "counterfactual_run_id": {
+          "name": "counterfactual_run_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "question": {
+          "name": "question",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "intervention_type": {
+          "name": "intervention_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "target_spec": {
+          "name": "target_spec",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "parameter_delta": {
+          "name": "parameter_delta",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "matched_seed": {
+          "name": "matched_seed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "identification_status": {
+          "name": "identification_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "identification_rationale": {
+          "name": "identification_rationale",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "confounders": {
+          "name": "confounders",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "alternative_explanations": {
+          "name": "alternative_explanations",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "causal_dag": {
+          "name": "causal_dag",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "delta_coordination": {
+          "name": "delta_coordination",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "delta_order_parameter": {
+          "name": "delta_order_parameter",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "delta_transfer_entropy": {
+          "name": "delta_transfer_entropy",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "effect_size_d": {
+          "name": "effect_size_d",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ci95_low": {
+          "name": "ci95_low",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ci95_high": {
+          "name": "ci95_high",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sensitivity_gamma_bound": {
+          "name": "sensitivity_gamma_bound",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "conclusion_label": {
+          "name": "conclusion_label",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "counterfactual_interventions_parent_run_id_experiment_runs_id_fk": {
+          "name": "counterfactual_interventions_parent_run_id_experiment_runs_id_fk",
+          "tableFrom": "counterfactual_interventions",
+          "tableTo": "experiment_runs",
+          "columnsFrom": [
+            "parent_run_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "counterfactual_interventions_counterfactual_run_id_experiment_runs_id_fk": {
+          "name": "counterfactual_interventions_counterfactual_run_id_experiment_runs_id_fk",
+          "tableFrom": "counterfactual_interventions",
+          "tableTo": "experiment_runs",
+          "columnsFrom": [
+            "counterfactual_run_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "counterfactual_interventions_code_unique": {
+          "name": "counterfactual_interventions_code_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "code"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.discovery_search_archives": {
+      "name": "discovery_search_archives",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "archive_code": {
+          "name": "archive_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "environment_family": {
+          "name": "environment_family",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "search_objective": {
+          "name": "search_objective",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "descriptor_x": {
+          "name": "descriptor_x",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "descriptor_y": {
+          "name": "descriptor_y",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "grid_size": {
+          "name": "grid_size",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 5
+        },
+        "total_evaluations": {
+          "name": "total_evaluations",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "coverage_pct": {
+          "name": "coverage_pct",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "qd_score": {
+          "name": "qd_score",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cells": {
+          "name": "cells",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "blind_spots": {
+          "name": "blind_spots",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "stopping_rule": {
+          "name": "stopping_rule",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "software_version": {
+          "name": "software_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'omeil-os-1.0.0'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "discovery_search_archives_archive_code_unique": {
+          "name": "discovery_search_archives_archive_code_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "archive_code"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.experiment_designs": {
+      "name": "experiment_designs",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "programme_id": {
+          "name": "programme_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "analysis_mode": {
+          "name": "analysis_mode",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'confirmatory'"
+        },
+        "primary_outcome": {
+          "name": "primary_outcome",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "secondary_outcomes": {
+          "name": "secondary_outcomes",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "smallest_effect_interest": {
+          "name": "smallest_effect_interest",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pilot_variance_estimate": {
+          "name": "pilot_variance_estimate",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "power_target": {
+          "name": "power_target",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0.8
+        },
+        "planned_trials": {
+          "name": "planned_trials",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "estimated_power": {
+          "name": "estimated_power",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "stopping_rule": {
+          "name": "stopping_rule",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "exclusion_criteria": {
+          "name": "exclusion_criteria",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "deviations": {
+          "name": "deviations",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'[]'::jsonb"
+        },
+        "preregistration_hash": {
+          "name": "preregistration_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "approved_by_human": {
+          "name": "approved_by_human",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "experiment_designs_programme_id_research_programmes_id_fk": {
+          "name": "experiment_designs_programme_id_research_programmes_id_fk",
+          "tableFrom": "experiment_designs",
+          "tableTo": "research_programmes",
+          "columnsFrom": [
+            "programme_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.experiment_runs": {
+      "name": "experiment_runs",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "run_code": {
+          "name": "run_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "programme_id": {
+          "name": "programme_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "design_id": {
+          "name": "design_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "parent_run_id": {
+          "name": "parent_run_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "intervention_id": {
+          "name": "intervention_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "run_type": {
+          "name": "run_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "environment_family": {
+          "name": "environment_family",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "seed": {
+          "name": "seed",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "agent_count": {
+          "name": "agent_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "steps": {
+          "name": "steps",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "memory_policy": {
+          "name": "memory_policy",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "comm_noise": {
+          "name": "comm_noise",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0.05
+        },
+        "comm_channel_enabled": {
+          "name": "comm_channel_enabled",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "coupling_strength": {
+          "name": "coupling_strength",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0.55
+        },
+        "resource_budget": {
+          "name": "resource_budget",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 100
+        },
+        "model_heterogeneity": {
+          "name": "model_heterogeneity",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'homogeneous_deterministic'"
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'completed'"
+        },
+        "failure_category": {
+          "name": "failure_category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "failure_reason": {
+          "name": "failure_reason",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "config_hash": {
+          "name": "config_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dataset_hash": {
+          "name": "dataset_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "software_version": {
+          "name": "software_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'omeil-os-0.9.4'"
+        },
+        "mean_coordination": {
+          "name": "mean_coordination",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "final_order_parameter": {
+          "name": "final_order_parameter",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "entropy_bits": {
+          "name": "entropy_bits",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mutual_info_bits": {
+          "name": "mutual_info_bits",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "transfer_entropy_bits": {
+          "name": "transfer_entropy_bits",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "critical_slowing_lag1": {
+          "name": "critical_slowing_lag1",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "micro_macro_divergence": {
+          "name": "micro_macro_divergence",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "anomaly_count": {
+          "name": "anomaly_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "statistical_power_observed": {
+          "name": "statistical_power_observed",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "data_quality": {
+          "name": "data_quality",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "trajectory": {
+          "name": "trajectory",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "final_agents": {
+          "name": "final_agents",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "events": {
+          "name": "events",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "experiment_runs_programme_id_research_programmes_id_fk": {
+          "name": "experiment_runs_programme_id_research_programmes_id_fk",
+          "tableFrom": "experiment_runs",
+          "tableTo": "research_programmes",
+          "columnsFrom": [
+            "programme_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "experiment_runs_design_id_experiment_designs_id_fk": {
+          "name": "experiment_runs_design_id_experiment_designs_id_fk",
+          "tableFrom": "experiment_runs",
+          "tableTo": "experiment_designs",
+          "columnsFrom": [
+            "design_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "experiment_runs_run_code_unique": {
+          "name": "experiment_runs_run_code_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "run_code"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.literature_records": {
+      "name": "literature_records",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "lit_code": {
+          "name": "lit_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "authors": {
+          "name": "authors",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "venue": {
+          "name": "venue",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "year": {
+          "name": "year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "doi_or_id": {
+          "name": "doi_or_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source_url": {
+          "name": "source_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "peer_review_status": {
+          "name": "peer_review_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "access_status": {
+          "name": "access_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "inspected_full_text": {
+          "name": "inspected_full_text",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "relation_to_programme": {
+          "name": "relation_to_programme",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "related_programme_code": {
+          "name": "related_programme_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "key_claim_checked": {
+          "name": "key_claim_checked",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "limitations_noted": {
+          "name": "limitations_noted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "retrieved_at": {
+          "name": "retrieved_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "literature_records_lit_code_unique": {
+          "name": "literature_records_lit_code_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "lit_code"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.parameter_sweeps": {
+      "name": "parameter_sweeps",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "sweep_code": {
+          "name": "sweep_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "environment_family": {
+          "name": "environment_family",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sweep_mode": {
+          "name": "sweep_mode",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "x_param": {
+          "name": "x_param",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "y_param": {
+          "name": "y_param",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "grid_points": {
+          "name": "grid_points",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "critical_transition_estimate": {
+          "name": "critical_transition_estimate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "hysteresis_gap": {
+          "name": "hysteresis_gap",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "assumptions_warning": {
+          "name": "assumptions_warning",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "software_version": {
+          "name": "software_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'omeil-os-1.0.0'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "parameter_sweeps_sweep_code_unique": {
+          "name": "parameter_sweeps_sweep_code_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "sweep_code"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.provenance_events": {
+      "name": "provenance_events",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "event_code": {
+          "name": "event_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "entity_type": {
+          "name": "entity_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "entity_id": {
+          "name": "entity_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "action": {
+          "name": "action",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "actor": {
+          "name": "actor",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "rationale": {
+          "name": "rationale",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "content_hash": {
+          "name": "content_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "software_version": {
+          "name": "software_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'omeil-os-0.9.4'"
+        },
+        "metadata": {
+          "name": "metadata",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{}'::jsonb"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "provenance_events_event_code_unique": {
+          "name": "provenance_events_event_code_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "event_code"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.red_team_reviews": {
+      "name": "red_team_reviews",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "claim_id": {
+          "name": "claim_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "reviewer_identity": {
+          "name": "reviewer_identity",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "reviewer_role": {
+          "name": "reviewer_role",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "explanation_category": {
+          "name": "explanation_category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "severity": {
+          "name": "severity",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "objection_text": {
+          "name": "objection_text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "evidence_ref": {
+          "name": "evidence_ref",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'unresolved'"
+        },
+        "blind_review": {
+          "name": "blind_review",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "shared_model_warning": {
+          "name": "shared_model_warning",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "resolution_note": {
+          "name": "resolution_note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "software_version": {
+          "name": "software_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'omeil-os-0.9.4'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "red_team_reviews_claim_id_claims_ledger_id_fk": {
+          "name": "red_team_reviews_claim_id_claims_ledger_id_fk",
+          "tableFrom": "red_team_reviews",
+          "tableTo": "claims_ledger",
+          "columnsFrom": [
+            "claim_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.research_programmes": {
+      "name": "research_programmes",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "research_question": {
+          "name": "research_question",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "operational_definition": {
+          "name": "operational_definition",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "competing_hypotheses": {
+          "name": "competing_hypotheses",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'active'"
+        },
+        "ethics_checklist_passed": {
+          "name": "ethics_checklist_passed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "limitations": {
+          "name": "limitations",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "research_programmes_code_unique": {
+          "name": "research_programmes_code_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "code"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.swarm_failure_audits": {
+      "name": "swarm_failure_audits",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "audit_code": {
+          "name": "audit_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "benchmark_task": {
+          "name": "benchmark_task",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "seed": {
+          "name": "seed",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "entries": {
+          "name": "entries",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "empirical_conclusion": {
+          "name": "empirical_conclusion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "software_version": {
+          "name": "software_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'omeil-os-1.0.0'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "swarm_failure_audits_audit_code_unique": {
+          "name": "swarm_failure_audits_audit_code_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "audit_code"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.system_controls": {
+      "name": "system_controls",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "emergency_stop_active": {
+          "name": "emergency_stop_active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "swarm_paused": {
+          "name": "swarm_paused",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "external_providers_disabled": {
+          "name": "external_providers_disabled",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "literature_retrieval_disabled": {
+          "name": "literature_retrieval_disabled",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "max_concurrent_jobs": {
+          "name": "max_concurrent_jobs",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 2
+        },
+        "max_agents_per_run": {
+          "name": "max_agents_per_run",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 48
+        },
+        "max_steps_per_run": {
+          "name": "max_steps_per_run",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 180
+        },
+        "active_capability_tier": {
+          "name": "active_capability_tier",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'TIER 1 — CORE LOCAL LAB'"
+        },
+        "autonomous_mode_enabled": {
+          "name": "autonomous_mode_enabled",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "autonomous_interval_sec": {
+          "name": "autonomous_interval_sec",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 5
+        },
+        "autonomous_cycle_count": {
+          "name": "autonomous_cycle_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "max_autonomous_cycles": {
+          "name": "max_autonomous_cycles",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 40
+        },
+        "last_autonomous_action": {
+          "name": "last_autonomous_action",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_stop_reason": {
+          "name": "last_stop_reason",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
